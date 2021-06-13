@@ -24,22 +24,26 @@ while True:
 
     if biggest.size !=0:
         #ảnh biggest
-        imgBigContour=imgContour.Draw_Biggest_Contours()
+        try:
+            imgBigContour=imgContour.Draw_Biggest_Contours()
 
-        warp = WrapImg(img,imgThreshold,contours,biggest,max_area)
-        WrapImgColor=warp.Create_WarpColor()
-        imgWarpGray=warp.Create_WarpGray()
-        imageArray = ([img,Img.Create_imgGray(),imgThreshold,image_contour],
-                        [imgBigContour,WrapImgColor, imgWarpGray,imgWarpGray])
+            warp = WrapImg(img,imgThreshold,contours,biggest,max_area)
+            WrapImgColor=warp.Create_WarpColor()
+            imgWarpGray=warp.Create_WarpGray()
+            imageArray = [[img,Img.Create_imgGray(),imgThreshold,image_contour],
+                            [imgBigContour,WrapImgColor, imgWarpGray,imgWarpGray]]
+        except:
+            imageArray = [[img,Img.Create_imgGray(),imgThreshold,image_contour],
+                    [imgBlank,imgBlank, imgBlank,imgBlank]]
+            
     else:
         
         imageArray = ([img,Img.Create_imgGray(),imgThreshold,image_contour],
                     [imgBlank,imgBlank, imgBlank,imgBlank])
-    cv2.imshow("img",img)
-    cv2.imshow("imgThreshold",imgThreshold)
-    cv2.imshow("image_contour",image_contour)
-    cv2.imshow("WrapImgColor",WrapImgColor)
-    cv2.imshow("WrapImgColor",imgWarpGray)
+    lables = [["Original","Gray","Threshold","Contours"],
+            ["Biggest Contour","Warp Prespective","Warp Gray","Adaptive Threshold"]]
+    stackedImage = stackImages(imageArray,0.75,lables)
+    cv2.imshow("Result",stackedImage)
     cv2.waitKey(1)
     
 
