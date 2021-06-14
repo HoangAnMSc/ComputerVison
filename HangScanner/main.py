@@ -1,7 +1,9 @@
 import cv2
 import numpy as np
 import utils
-from image import Image, BiggestContour, Scanner
+from image import Image
+from contours import BiggestContour
+from scanner import Scanner
 import config as cf
 from PIL import Image as image
 
