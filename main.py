@@ -14,7 +14,8 @@ cap.set(10,160)
 
 def RUNNNNNNN(webcamFeed,path_img):
     utils.initializeTrackbars()
-    while True:
+    is_run=True
+    while is_run:
         cf.path_img=path_img
         cf.webcamFeed = webcamFeed
         thres = utils.valTrackbars()
@@ -60,6 +61,9 @@ def RUNNNNNNN(webcamFeed,path_img):
             cv2.imshow('Result', stackedImage)
             cv2.waitKey(300)
             count += 1
+        elif pressedKey==ord('q'):
+            is_run=False
+            cv2.destroyAllWindows()
 
 A=App(RUNNNNNNN)
 A.Action_B1()
