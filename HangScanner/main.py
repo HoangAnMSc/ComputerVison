@@ -11,8 +11,9 @@ cap = cv2.VideoCapture(0)
 cap.set(10,160)
 
 
-count=0
+
 def RUNNNNNNN(webcamFeed,path_img):
+    count=0
     utils.initializeTrackbars()
     while True:
         cf.path_img=path_img

@@ -14,7 +14,8 @@ class App:
         self.Button1 = None
         self.my_label =None
         self.pathname1 =None
-        self.webcamFeed=True
+        self.webcamFeed=False
+        self.Button2=None
     def files(self):
         self.window.filename = filedialog.askopenfilename(initialdir='image/',title="Select File: ",filetypes=(("jpeg files","*.jpg"),("all files","*.*")))
         self.pathname1=self.window.filename
@@ -22,13 +23,15 @@ class App:
         if self.pathname1:
             self.webcamFeed=False
             RUNNNNNNN(self.webcamFeed,self.pathname1)
+    def file2(self):
+        RUNNNNNNN(True,self.pathname1)
+
     def Action_B1(self):
         self.Button1 = Button(self.window, text="Select File",command=self.files)
         self.Button1.pack()
-        print(self.Button1)
-        self.my_label= Label(self.window, text="ALL DONE!")
-        self.my_label.pack()
-
+    def Action_B2(self):
+        self.Button2 = Button(self.window, text="Bật camera",command=self.file2)
+        self.Button2.pack()
         
     def Action(self):
         self.window.mainloop()
@@ -38,4 +41,5 @@ class App:
 
 A=App()
 A.Action_B1()
+A.Action_B2()
 A.Action()
