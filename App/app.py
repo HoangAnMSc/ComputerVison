@@ -1,3 +1,4 @@
+from HangScanner import image
 from tkinter import *
 from tkinter import filedialog
 from PIL import Image, ImageTk
@@ -7,8 +8,14 @@ class App:
         self.window.title("Welcome to My Team")
         self.window.geometry('500x500')
         self.window.iconbitmap("ai.ico")
-        self.Intro = Label(self.window, text="""An - Anh - Hằng 
-                                        """)
+
+        #Add logo
+        self.logo = Image.open('logo.png')
+        self.logo = ImageTk.PhotoImage(self.logo)
+        self.Intro = Label(image = self.logo)
+        self.Intro.image = self.logo
+        self.Intro.grid(column=1, row=0)
+
         self.Intro.pack()
         self.Button1 = None
         self.my_label =None
@@ -16,6 +23,7 @@ class App:
         self.webcamFeed=False
         self.Button2=None
         self.RUNN = RunFunction
+
     def files(self):
         self.window.filename = filedialog.askopenfilename(initialdir='image/',title="Select File: ",filetypes=(("jpeg files","*.jpg"),("all files","*.*")))
         self.pathname1=self.window.filename
@@ -28,10 +36,11 @@ class App:
         self.RUNN(True,self.pathname1)
 
     def Action_B1(self):
-        self.Button1 = Button(self.window, text="Select File",command=self.files)
-        self.Button1.pack()
+        self.Button1 = Button(self.window, text="Select File",command=self.files, font='Raleway', bg = '#00c2cb', fg='white', height= 1, width= 10)
+        self.Button1.pack(pady=10)
+
     def Action_B2(self):
-        self.Button2 = Button(self.window, text="Bật camera",command=self.file2)
+        self.Button2 = Button(self.window, text="Bật camera",command=self.file2,  font='Raleway', bg = '#00c2cb', fg='white', height= 1, width= 10)
         self.Button2.pack()
         
     def Action(self):
