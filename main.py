@@ -1,19 +1,18 @@
 import cv2
 import numpy as np
-from HangScanner import utils
-from HangScanner.image import Image
-from HangScanner.contours import BiggestContour
-from HangScanner.scanner import Scanner
-import HangScanner.config as cf
+from HangScanner import *
 from PIL import Image as image
+import config as cf
+import cv2
+import numpy as np
+from App import *
+
 
 cap = cv2.VideoCapture(0)
 cap.set(10,160)
 
 
-
 def RUNNNNNNN(webcamFeed,path_img):
-    count=0
     utils.initializeTrackbars()
     while True:
         cf.path_img=path_img
@@ -28,7 +27,7 @@ def RUNNNNNNN(webcamFeed,path_img):
                 contour.imgBigContour = contour.DrawBiggestContour()
                 scan = Scanner(img, contour)
                 imageArray = ([img.image, img.imageGray, img.imageThreshold, contour.imgContours],
-                            [contour.imgBigContour, scan.imgWarpColored, scan.imgWarpGray, scan.imgAdaptiveThre])
+                            [contour.imgBigContours, scan.imgWarpColored, scan.imgWarpGray, scan.imgAdaptiveThre])
             except:
                 imageArray = ([img.image, img.imageGray, img.imageThreshold, contour.imgContours],
                         [img.imageBlank, img.imageBlank, img.imageBlank, img.imageBlank])
@@ -44,6 +43,7 @@ def RUNNNNNNN(webcamFeed,path_img):
         cv2.imshow("Result",stackedImage)
     
         # SAVE IMAGE WHEN 's' key is pressed
+        count=0
         pressedKey = cv2.waitKey(1) & 0xFF
         if pressedKey == ord('s'):
             cv2.imwrite("Scanned/myImage"+str(count)+".jpg",scan.imgWarpColored)
@@ -60,3 +60,8 @@ def RUNNNNNNN(webcamFeed,path_img):
             cv2.imshow('Result', stackedImage)
             cv2.waitKey(300)
             count += 1
+
+A=App(RUNNNNNNN)
+A.Action_B1()
+A.Action_B2()
+A.Action()

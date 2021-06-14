@@ -1,9 +1,8 @@
 from tkinter import *
 from tkinter import filedialog
-from HangScanner.main import * 
 from PIL import Image, ImageTk
 class App:
-    def __init__(self):
+    def __init__(self, RunFunction):
         self.window = Tk()
         self.window.title("Welcome to My Team")
         self.window.geometry('500x500')
@@ -16,15 +15,17 @@ class App:
         self.pathname1 =None
         self.webcamFeed=False
         self.Button2=None
+        self.RUNN = RunFunction
     def files(self):
         self.window.filename = filedialog.askopenfilename(initialdir='image/',title="Select File: ",filetypes=(("jpeg files","*.jpg"),("all files","*.*")))
         self.pathname1=self.window.filename
         print(self.pathname1)
         if self.pathname1:
             self.webcamFeed=False
-            RUNNNNNNN(self.webcamFeed,self.pathname1)
+            self.RUNN(self.webcamFeed,self.pathname1)
+
     def file2(self):
-        RUNNNNNNN(True,self.pathname1)
+        self.RUNN(True,self.pathname1)
 
     def Action_B1(self):
         self.Button1 = Button(self.window, text="Select File",command=self.files)
@@ -39,7 +40,3 @@ class App:
 
 
 
-A=App()
-A.Action_B1()
-A.Action_B2()
-A.Action()
