@@ -35,11 +35,11 @@ class App:
         self.RUNN(True,self.pathname1)
 
     def Action_B1(self):
-        self.Button1 = Button(self.window, text="Select File",command=self.files, font=('Helvetica', 13, 'bold'), bg = '#00c2cb', fg='white', height= 1, width= 10)
+        self.Button1 = Button(self.window, text="Select File",command=self.files, font=('Helvetica', 13, 'bold'), bg = '#00c2cb', fg='white', height= 1, width= 14)
         self.Button1.pack(pady=10)
 
     def Action_B2(self):
-        self.Button2 = Button(self.window, text="Turn on Camera",command=self.file2, font=('Helvetica', 13, 'bold'), bg = '#00c2cb', fg='white', height= 1, width= 13)
+        self.Button2 = Button(self.window, text="Turn on Camera",command=self.file2, font=('Helvetica', 13, 'bold'), bg = '#00c2cb', fg='white', height= 1, width= 14)
         self.Button2.pack()
 
     def Action(self):
