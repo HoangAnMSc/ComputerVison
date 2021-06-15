@@ -1,6 +1,6 @@
 import cv2
 import numpy as np
-from HangScanner import *
+from Scanner import *
 from PIL import Image as image
 import config as cf
 import cv2
@@ -45,12 +45,12 @@ def RUNNNNNNN(webcamFeed, path_img):
         count=0
         pressedKey = cv2.waitKey(1) & 0xFF
         if pressedKey == ord('s'):
-            cv2.imwrite("Scanned/myImage"+str(count)+".jpg",scan.imgWarpColored)
+            cv2.imwrite("ImgScanned/myImage"+str(count)+".jpg",scan.imgWarpColored)
             
             # Convert to PDF
-            image1 = image.open("Scanned/myImage"+str(count)+".jpg")
+            image1 = image.open("ImgScanned/myImage"+str(count)+".jpg")
             im1 = image1.convert('RGB')
-            im1.save("Scanned/myImage"+str(count)+".pdf")
+            im1.save("ImgScanned/myImage"+str(count)+".pdf")
 
             cv2.rectangle(stackedImage, ((int(stackedImage.shape[1] / 2) - 250), int(stackedImage.shape[0] / 2) + 50),
                         (1100, 350), (0, 255, 0), cv2.FILLED)

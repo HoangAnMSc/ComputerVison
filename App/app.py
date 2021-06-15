@@ -1,4 +1,3 @@
-from HangScanner import image
 from tkinter import *
 from tkinter import filedialog
 from PIL import Image, ImageTk
@@ -25,7 +24,7 @@ class App:
         self.RUNN = RunFunction
 
     def files(self):
-        self.window.filename = filedialog.askopenfilename(initialdir='image/',title="Select File: ",filetypes=(("jpeg files","*.jpg"),("all files","*.*")))
+        self.window.filename = filedialog.askopenfilename(initialdir='Image/',title="Select File: ",filetypes=(("jpeg files","*.jpg"),("all files","*.*")))
         self.pathname1=self.window.filename
         print(self.pathname1)
         if self.pathname1:
@@ -40,7 +39,7 @@ class App:
         self.Button1.pack(pady=10)
 
     def Action_B2(self):
-        self.Button2 = Button(self.window, text="Bật camera",command=self.file2,  font='Raleway', bg = '#00c2cb', fg='white', height= 1, width= 10)
+        self.Button2 = Button(self.window, text="Turn on Camera",command=self.file2, font='Raleway', bg = '#00c2cb', fg='white', height= 1, width= 10)
         self.Button2.pack()
         
     def Action(self):
