@@ -4,7 +4,7 @@ from PIL import Image, ImageTk
 class App:
     def __init__(self, RunFunction):
         self.window = Tk()
-        self.window.title("Welcome to My Team")
+        self.window.title("Welcome to An-Anh-Hằng")
         self.window.geometry('500x500')
         self.window.iconbitmap("ai.ico")
 
